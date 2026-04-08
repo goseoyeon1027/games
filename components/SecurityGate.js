@@ -288,10 +288,10 @@ export default function SecurityGate({ onUnlockSuccess }) {
   const isReady = isModelLoaded && isCameraReady;
   
   const getBorderColor = () => {
-    if (systemStatus === 'SCANNING') return '#00D4FF';
-    if (systemStatus === 'SUCCESS') return '#4ECDC4';
-    if (systemStatus === 'FAILURE') return '#ff6b6b';
-    return 'rgba(255,255,255,1)';
+    if (systemStatus === 'SCANNING') return '#0984e3'; // Deeper blue
+    if (systemStatus === 'SUCCESS') return '#00b894'; // Deeper mint
+    if (systemStatus === 'FAILURE') return '#d63031'; // Deeper red
+    return '#636e72';
   };
 
   const getStatusText = () => {
@@ -306,8 +306,8 @@ export default function SecurityGate({ onUnlockSuccess }) {
       
       {/* 상태 헤더 */}
       <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '2rem' }}>
-          🔐 VIP 라운지 — 보안 게이트
+        <h2 className="text-gradient" style={{ fontSize: '2.5rem', fontWeight: 800 }}>
+          🔐 VIP 라운지 보안 게이트
         </h2>
         <div style={{ 
           marginTop: '0.5rem', padding: '4px 15px', borderRadius: '15px', 

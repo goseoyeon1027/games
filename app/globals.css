@@ -1,13 +1,15 @@
 :root {
-  --primary-blue: #0070f3;
-  --primary-purple: #7928ca;
-  --secondary-blue: #00d4ff;
-  --space-dark: #050b18;
-  --space-gradient: radial-gradient(circle at center, #1a1b4b 0%, #050b18 100%);
+  --primary-pastel: #A1C4FD;
+  --secondary-pastel: #C2E9FB;
+  --accent-pink: #FBC2EB;
+  --accent-purple: #E0C3FC;
+  --bg-pastel: #F5F7FA;
+  --text-main: #2D3436;
+  --text-dim: #636E72;
   --font-noto-sans-kr: "Noto Sans KR", sans-serif;
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --border-radius: 20px;
+  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --border-radius: 24px;
 }
 
 * {
@@ -21,18 +23,12 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: var(--font-noto-sans-kr);
-  background: var(--space-gradient);
-  background-attachment: fixed;
-  color: white;
+  background: var(--bg-pastel);
+  color: var(--text-main);
   min-height: 100vh;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Background Stars Effect */
+/* Unique Pastel Mesh Background */
 body::before {
   content: "";
   position: fixed;
@@ -40,23 +36,47 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 0.3;
-  z-index: -1;
-  animation: shine 5s infinite alternate;
+  background: linear-gradient(120deg, var(--primary-pastel) 0%, var(--accent-pink) 50%, var(--accent-purple) 100%);
+  opacity: 0.15;
+  z-index: -2;
 }
 
-@keyframes shine {
-  from { opacity: 0.2; }
-  to { opacity: 0.4; }
+/* Floating Organic Blobs */
+body::after {
+  content: "";
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-pink) 0%, transparent 70%);
+  filter: blur(80px);
+  opacity: 0.4;
+  z-index: -1;
+  animation: float-blob 20s infinite alternate;
+}
+
+@keyframes float-blob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-50px, 100px) scale(1.1); }
+}
+
+.blob-2 {
+  position: fixed;
+  bottom: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--primary-pastel) 0%, transparent 70%);
+  filter: blur(100px);
+  opacity: 0.3;
+  z-index: -1;
+  animation: float-blob-2 25s infinite alternate-reverse;
+}
+
+@keyframes float-blob-2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, -50px); }
 }
 
 a {
@@ -67,22 +87,23 @@ a {
 /* Card Style */
 .card {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px) saturate(180%);
   border-radius: var(--border-radius);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-blue);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+  border-color: var(--accent-purple);
 }
 
 /* Typography Gradient */
 .text-gradient {
-  background: linear-gradient(135deg, var(--secondary-blue), var(--primary-purple));
+  background: linear-gradient(135deg, #74b9ff, #a29bfe, #fd79a8);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -129,24 +150,23 @@ main {
   border-radius: 40px;
   border: none;
   background: transparent;
-  color: white;
+  color: var(--text-dim);
   cursor: pointer;
   font-family: inherit;
   font-size: 1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0.6;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .tab-btn:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .tab-btn.active {
-  opacity: 1;
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-  box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
-  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #a29bfe, #81ecec);
+  box-shadow: 0 10px 20px rgba(162, 155, 254, 0.3);
+  font-weight: 700;
 }
 
 /* Content Area Styles */

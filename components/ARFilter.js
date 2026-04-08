@@ -283,28 +283,28 @@ export default function ARFilter({ isUnlocked, onGoToSecurity }) {
       {!isUnlocked && (
         <div style={{ 
           position: 'absolute', inset: 0, zIndex: 1000, 
-          background: 'rgba(5, 11, 24, 0.85)', backdropFilter: 'blur(15px)',
+          background: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(25px) saturate(150%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          borderRadius: '30px', border: '1px solid rgba(255,255,255,0.1)',
-          animation: 'fadeIn 0.5s ease-out', padding: '2rem', textAlign: 'center'
+          borderRadius: '30px', border: '1px solid rgba(255, 255, 255, 0.5)',
+          animation: 'fadeIn 0.8s ease-out', padding: '2rem', textAlign: 'center'
         }}>
-          <div style={{ fontSize: '6rem', marginBottom: '1.5rem', filter: 'drop-shadow(0 0 20px rgba(168, 85, 247, 0.4))' }}>🔒</div>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>VIP 전용 라운지</h2>
-          <p style={{ fontSize: '1.2rem', marginBottom: '2.5rem', opacity: 0.8, maxWidth: '400px', lineHeight: '1.6' }}>
-            이곳은 인증된 VIP만 입장할 수 있는 공간입니다.<br/>
+          <div style={{ fontSize: '7rem', marginBottom: '1.5rem', filter: 'drop-shadow(0 10px 20px rgba(162, 155, 254, 0.3))' }}>🔓</div>
+          <h2 style={{ fontSize: '2.8rem', marginBottom: '1rem', color: '#2D3436' }}>VIP 전용 라운지</h2>
+          <p style={{ fontSize: '1.25rem', marginBottom: '2.5rem', color: '#636E72', maxWidth: '420px', lineHeight: '1.6' }}>
+            이곳은 인증된 VIP만 입장할 수 있는 특별한 공간입니다.<br/>
             보안 게이트에서 얼굴 인증을 완료해주세요.
           </p>
           <button 
             onClick={onGoToSecurity}
             style={{ 
-              padding: '1.2rem 3rem', borderRadius: '40px', border: 'none',
-              background: 'linear-gradient(135deg, #a855f7, #6366f1)',
-              color: 'white', fontSize: '1.2rem', fontWeight: 700, cursor: 'pointer',
-              boxShadow: '0 10px 25px rgba(168, 85, 247, 0.4)',
-              transition: 'transform 0.2s'
+              padding: '1.2rem 3.5rem', borderRadius: '50px', border: 'none',
+              background: 'linear-gradient(135deg, #a29bfe, #fd79a8)',
+              color: 'white', fontSize: '1.2rem', fontWeight: 800, cursor: 'pointer',
+              boxShadow: '0 15px 30px rgba(162, 155, 254, 0.4)',
+              transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
             }}
-            onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-            onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+            onMouseOver={(e) => e.target.style.transform = 'translateY(-5px) scale(1.05)'}
+            onMouseOut={(e) => e.target.style.transform = 'translateY(0) scale(1)'}
           >
             🔐 보안 게이트로 이동하기
           </button>
@@ -314,14 +314,14 @@ export default function ARFilter({ isUnlocked, onGoToSecurity }) {
       {/* 입장 환영 메시지 (해금 직후) */}
       {isUnlocked && (
         <div style={{ 
-          position: 'fixed', top: '20%', left: '50%', transform: 'translateX(-50%)',
-          zIndex: 1100, background: 'linear-gradient(135deg, #4ECDC4, #6366f1)',
-          padding: '1.5rem 3rem', borderRadius: '50px', color: 'white', fontWeight: 800,
-          fontSize: '1.8rem', boxShadow: '0 10px 40px rgba(0,0,0,0.4)',
-          animation: 'welcome-fade 3s forwards ease-in-out',
-          pointerEvents: 'none'
+          position: 'fixed', top: '15%', left: '50%', transform: 'translateX(-50%)',
+          zIndex: 1100, background: 'linear-gradient(135deg, #81ecec, #a29bfe)',
+          padding: '1.5rem 4rem', borderRadius: '60px', color: 'white', fontWeight: 800,
+          fontSize: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+          animation: 'welcome-fade 3.5s forwards cubic-bezier(0.19, 1, 0.22, 1)',
+          pointerEvents: 'none', border: '2px solid rgba(255,255,255,0.5)'
         }}>
-          🎉 VIP 입장 허가! 환영합니다!
+          ✨ VIP Dreams Granted! ✨
           <style dangerouslySetInnerHTML={{ __html: `
             @keyframes welcome-fade {
               0% { opacity: 0; transform: translate(-50%, -20px); }

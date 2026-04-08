@@ -59,24 +59,27 @@ export default function Home() {
 
   return (
     <main style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 2rem' }}>
+      {/* 배경용 추가 블롭 (유니크 포인트) */}
+      <div className="blob-2"></div>
+
       <div className="container" style={{ position: 'relative', zIndex: 10, width: '100%', maxWidth: '1200px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* 헤더 섹션 */}
         <header style={{ textAlign: 'center', marginBottom: '4rem', paddingTop: '4rem' }}>
-          <h1 className="text-gradient" style={{ fontSize: '5rem', marginBottom: '1.2rem', fontWeight: 900, letterSpacing: '-0.04em' }}>
+          <h1 className="text-gradient" style={{ fontSize: '5.5rem', marginBottom: '1.2rem', fontWeight: 900, letterSpacing: '-0.05em' }}>
             🎮 AI 체험관
           </h1>
-          <p style={{ fontSize: '1.6rem', opacity: 1, fontWeight: 300, color: 'rgba(255,255,255,1)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
-            Realize Academy · <span style={{ fontWeight: 600, color: '#00D4FF' }}>나만의 AI 체험 세계</span>
+          <p style={{ fontSize: '1.6rem', opacity: 1, fontWeight: 400, color: '#636E72', letterSpacing: '-0.02em' }}>
+            Realize Academy · <span style={{ fontWeight: 700, color: '#74b9ff' }}>나만의 AI 꿈의 공간</span>
           </p>
         </header>
 
         {/* 탭 내비게이션 */}
         <nav style={{ 
-          display: 'flex', gap: '10px', background: 'rgba(5, 11, 24, 0.6)', 
-          padding: '10px', borderRadius: '60px', border: '1px solid rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(30px)', marginBottom: '4rem', boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-          position: 'sticky', top: '20px', zIndex: 100
+          display: 'flex', gap: '12px', background: 'rgba(255, 255, 255, 0.4)', 
+          padding: '12px', borderRadius: '60px', border: '1px solid rgba(255, 255, 255, 0.6)',
+          backdropFilter: 'blur(30px)', marginBottom: '4.5rem', boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
+          position: 'sticky', top: '25px', zIndex: 100
         }}>
           {TABS.map((tab) => (
             <button
@@ -88,16 +91,16 @@ export default function Home() {
               }}
               style={{
                 padding: '0.8rem 2.2rem', borderRadius: '50px', border: 'none',
-                background: activeTabId === tab.id ? 'linear-gradient(135deg, #6366f1, #a855f7)' : 'transparent',
-                color: activeTabId === tab.id ? 'white' : 'rgba(255,255,255,0.6)',
-                cursor: 'pointer', fontSize: '1.1rem', fontWeight: 600,
-                transition: 'all 0.4s cubic-bezier(0.19, 1, 0.22, 1)',
+                background: activeTabId === tab.id ? 'linear-gradient(135deg, #a29bfe, #81ecec)' : 'transparent',
+                color: activeTabId === tab.id ? 'white' : '#636E72',
+                cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700,
+                transition: 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)',
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px',
-                boxShadow: activeTabId === tab.id ? '0 10px 25px rgba(99, 102, 241, 0.4)' : 'none',
+                boxShadow: activeTabId === tab.id ? '0 10px 25px rgba(162, 155, 254, 0.3)' : 'none',
                 transform: activeTabId === tab.id ? 'scale(1.05)' : 'scale(1)',
               }}
             >
-              <span style={{ fontSize: '0.7rem', opacity: activeTabId === tab.id ? 0.9 : 0.6, fontWeight: 500 }}>{tab.week}</span>
+              <span style={{ fontSize: '0.75rem', opacity: activeTabId === tab.id ? 1 : 0.6, fontWeight: 600 }}>{tab.week}</span>
               {tab.title}
             </button>
           ))}
@@ -105,7 +108,7 @@ export default function Home() {
 
         {/* 콘텐츠 전환 영역 */}
         <section style={{ width: '100%', minHeight: '700px', display: 'flex', justifyContent: 'center' }}>
-          <div key={activeTabId} style={{ width: '100%', display: 'flex', justifyContent: 'center', animation: 'contentShow 0.8s cubic-bezier(0.19, 1, 0.22, 1)' }}>
+          <div key={activeTabId} style={{ width: '100%', display: 'flex', justifyContent: 'center', animation: 'contentShow 1s cubic-bezier(0.19, 1, 0.22, 1)' }}>
             {activeTabId === 'rock-paper-scissors' && <RockPaperScissors />}
             {activeTabId === 'object-move' && <ObjectMove />}
             {activeTabId === 'handpose' && <HandPose />}
@@ -123,20 +126,20 @@ export default function Home() {
 
         {/* 푸터 섹션 */}
         <footer style={{ 
-          marginTop: '8rem', padding: '4rem 0', width: '100%',
-          borderTop: '1px solid rgba(255,255,255,0.08)', textAlign: 'center', 
-          background: 'linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.05))'
+          marginTop: '10rem', padding: '4rem 0', width: '100%',
+          borderTop: '1px solid rgba(0,0,0,0.05)', textAlign: 'center', 
+          background: 'linear-gradient(to bottom, transparent, rgba(162, 155, 254, 0.05))'
         }}>
-          <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', letterSpacing: '0.02em', marginBottom: '1rem' }}>
-            Made with ❤️ by <strong style={{ color: '#fff', fontSize: '1.3rem' }}>고서연</strong> · Realize Academy
+          <p style={{ fontSize: '1.2rem', color: '#636E72', letterSpacing: '0.02em', marginBottom: '1.2rem' }}>
+            Made with 🤍 by <strong style={{ color: '#2D3436', fontSize: '1.3rem' }}>고서연</strong> · Realize Academy
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', opacity: 0.4, fontSize: '0.9rem' }}>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-            <span>Contact Us</span>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', opacity: 0.6, fontSize: '0.95rem' }}>
+            <span style={{ cursor: 'pointer' }}>Privacy Policy</span>
+            <span style={{ cursor: 'pointer' }}>Terms of Service</span>
+            <span style={{ cursor: 'pointer' }}>Contact Us</span>
           </div>
-          <p style={{ fontSize: '0.9rem', marginTop: '2rem', opacity: 0.3 }}>
-            © 2024 AI Experience World. All rights reserved.
+          <p style={{ fontSize: '0.9rem', marginTop: '2.5rem', opacity: 0.4 }}>
+            © {new Date().getFullYear()} AI Experience Dream. All rights reserved.
           </p>
         </footer>
       </div>
